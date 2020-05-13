@@ -4,7 +4,7 @@ if(process.env.NODE_ENV === 'dev' || process.env.NODE_ENV ==='test') {
 
 
 
-require('dotenv').config();
+//require('dotenv').config();
 let PORT = process.env.PORT || 3030;
 let MONGODB_URI = process.env.MONGODB_URL;
 
