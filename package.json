@@ -1,0 +1,27 @@
+{
+  "name": "todo-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "start-dev": "NODE_ENV=dev node index.js",
+    "test": "NODE_ENV=test jest --verbose --runInBand " 
+  },
+  "keywords": [],
+  "author": "Max Polsky",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.12",
+    "morgan": "^1.10.0",
+    "sanitize-html": "^1.23.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "jest": "^26.0.1",
+    "supertest": "^4.0.2"
+  }
+}

@@ -1,7 +1,7 @@
 import {Modal} from './modal.js'
 let list;
 
-axios.get('http://localhost:3000/todo')
+axios.get('/api/todo')
   .then(function (response) {
       console.log(response.data);
         list = new ListItem(response.data);
@@ -47,16 +47,19 @@ axios.get('http://localhost:3000/todo')
 
         hendleDeleteBtn(event){
             event.preventDefault();
-            const url = `http://localhost:3000/todo/${this.data._id}`;
-            axios.delete(url);
+            event.stopPropagation();
+            const url = `/api/todo/${this.data._id}`;
             this.li.remove();
             this.dltBtn.remove();
+            axios.delete(url);
         }
 
         hendleClick = (event) => {
             this.data.completed = !this.data.completed;
             this.li.setAttribute("class",this.data.completed? "task done" : "task");
-            axios.patch(`http://localhost:3000/todo/${this.data._id}`,this.data);
+            console.log('patch!');
+            
+            axios.patch(`/api/todo/${this.data._id}`,this.data);
             
         }
     }
@@ -65,14 +68,10 @@ const input = document.getElementById('todoInput');
 input.addEventListener('keypress',(event)=>{
     if(event.key == 'Enter'){
         const item = {
-            completed : false,
-            creted_at : new Date(),
             name : input.value,
-            __v : 0,
-            _id : Math.random().toString()
         }
-        list.addNewItem(item);
-        axios.post('http://localhost:3000/todo/',item).then(res => console.log(res));
+        axios.post('/api/todo',item).then(res => list.addNewItem(res.data));
+        input.value = '';
     }
 });
 

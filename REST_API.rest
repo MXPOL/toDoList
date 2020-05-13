@@ -1,0 +1,14 @@
+POST http://localhost:3030/api/todo/ 
+Content-Type: application/json
+
+
+{"name" : "test6"}
+
+
+
+
+####
+
+DELETE http://localhost:3030/api/todo/5eb9e39da2b154789d2fdd1c
+
+

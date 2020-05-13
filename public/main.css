@@ -101,7 +101,9 @@ header li:hover{
 	color: #222831;
 }
 .task:hover button{
-    margin-left: 10px;
+    border-color: aquamarine;
+    z-index: 100;
+    margin-left: 500px;
     display: inline;
 
 }
