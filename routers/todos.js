@@ -11,15 +11,21 @@ router.route("/")
     .post((req,res,next)=>{
         const body = req.body
 
-        const newTodo = new db.Todo ({
-            name : sanitizeHtml(body.name),
-        })
-        newTodo.save()
-            .then(newtodo =>{
-            res.status(201).json(newTodo);
+        try{
+            if (sanitizeHtml(body.name).length === 0 ){
+                throw 'todo length cant be zero!';
+            }
+            const newTodo = new db.Todo ({
+                name : sanitizeHtml(body.name),
             })
-            .catch(error => next(error))
-    });
+            newTodo.save()
+                .then(newtodo =>{
+                    res.status(201).json(newTodo);
+                })
+        }catch(error){
+            next(error);
+        } 
+    })
 
 router.route("/:id")
     .get((req,res)=>{
@@ -29,7 +35,6 @@ router.route("/:id")
         });
     })    
     .patch((req,res)=>{
-        console.log('patch');
         const {id} = req.params;
         db.Todo.findById(id).then(todo =>{
             const {completed } = todo;

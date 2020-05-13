@@ -8,8 +8,8 @@ const unknownEndpoint = (req,res) => {
 }
 
 const errorHandler = (error,req,res, next) => {
-    logger.error(error.massage)
-    return res.status(400).send({error : "ERROR!"});
+    logger.error(error)
+    return res.status(400).send({error : error});
     next(error);
     
 }

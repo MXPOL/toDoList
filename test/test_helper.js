@@ -1,4 +1,6 @@
-const Todo = require('../models');
+const Todo = require('../models/todo');
+const db =require('../models');
+
 
 const initialTodos = [
     {
@@ -12,6 +14,16 @@ const initialTodos = [
     }
 ]
 
+const notValidTodo = {
+    name : "<img>"
+};
+
+const todoInDb = async () =>{
+    const todos =  await db.Todo.find();
+    return todos.map(todo => todo.toJSON());
+}
 module.exports = {
     initialTodos,
+    notValidTodo,
+    todoInDb,
 }

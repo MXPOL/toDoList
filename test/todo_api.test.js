@@ -34,6 +34,37 @@ test('a sepcific todo is returned', async () => {
     const content = response.body.map(res => res.name);
     expect(content).toContain(helper.initialTodos[1].name);
 });
+
+test('a not valid should be rejected',async () =>{
+    await api
+            .post('/api/todo')
+            .send(helper.notValidTodo)
+            .expect(400)
+            
+})
+
+test('a todo can be deleted', async () =>{
+    const response = await api.get('/api/todo')
+    const id = response.body.map(todo => todo._id);
+    await api
+            .delete(`/api/todo/${id[0]}`)
+            .expect(204)
+
+
+    const todoindb = await helper.todoInDb();
+    expect(todoindb.length).toBe(helper.initialTodos.length - 1)
+});
+
+test('todo completion ', async () => {
+    const response = await api.get('/api/todo')
+    const id = response.body.map(todo => todo._id);
+    await api
+            .patch(`/api/todo/${id[0]}`)
+
+    const todoAfter = await db.Todo.findById(id[0]);
+    //console.log(todoAfter);
+    expect(todoAfter).toEqual(expect.objectContaining({completed : true}))
+});
  
 afterAll(async () => {
     await mongoose.connection.close()
