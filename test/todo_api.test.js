@@ -62,7 +62,6 @@ test('todo completion ', async () => {
             .patch(`/api/todo/${id[0]}`)
 
     const todoAfter = await db.Todo.findById(id[0]);
-    //console.log(todoAfter);
     expect(todoAfter).toEqual(expect.objectContaining({completed : true}))
 });
  
