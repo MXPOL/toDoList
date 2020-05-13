@@ -1,3 +1,4 @@
+import {Modal} from './modal.js'
 let list;
 
 axios.get('http://localhost:3000/todo')
@@ -74,3 +75,5 @@ input.addEventListener('keypress',(event)=>{
         axios.post('http://localhost:3000/todo/',item).then(res => console.log(res));
     }
 });
+
+
