@@ -36,14 +36,14 @@ attach an env file with TEST_MONGODB_URI before running this script
   {
     "completed": false,
     "_id": "5eb9e8326a36698371bebe01",
-    "name": "Go To Shopping",
+    "name": "Buy Milk",
     "created_at": "2020-05-12T00:05:06.398Z",
     "__v": 0
   },
   {
     "completed": true,
     "_id": "5eb9e9dfcd08500017f9878d",
-    "name": "To star this project",
+    "name": "To star this project :)",
     "created_at": "2020-05-13T17:23:26.140Z",
     "__v": 0
   }
@@ -56,7 +56,7 @@ attach an env file with TEST_MONGODB_URI before running this script
   {
     "completed": true,
     "_id": "5eb9e9dfcd08500017f9878d",
-    "name": "To star this project",
+    "name": "To star this project :)",
     "created_at": "2020-05-13T17:23:26.140Z",
     "__v": 0
   }
