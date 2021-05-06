@@ -17,7 +17,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.9.12",
     "morgan": "^1.10.0",
-    "sanitize-html": "^1.23.0"
+    "sanitize-html": "^2.3.2"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
